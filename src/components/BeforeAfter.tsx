@@ -73,7 +73,7 @@ const BeforeAfter = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4 sm:gap-8">
           {projects.map((project, index) => (
             <motion.div
               key={index}
@@ -87,7 +87,7 @@ const BeforeAfter = () => {
                 setHoveredSide(null);
               }}
             >
-              <div className="relative h-64 md:h-80">
+              <div className="relative h-48 sm:h-56 md:h-64">
                 <div className="absolute inset-0 flex">
                   {/* Öncesi */}
                   <motion.div 

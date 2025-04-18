@@ -121,7 +121,7 @@ export default function Gallery() {
         </motion.div>
         
         {/* Boya ve Dekorasyon Projeleri */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-8 mb-20">
           {completedWorks.map((work, index) => (
             <motion.div
               key={index}
@@ -132,12 +132,12 @@ export default function Gallery() {
               variants={cardVariants}
               whileHover={{ y: -5 }}
             >
-              <div className="relative w-full h-72">
+              <div className="relative w-full h-48 sm:h-56 md:h-64">
                 <Image
                   src={work.imageUrl}
                   alt={work.title}
                   fill
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  sizes="(max-width: 640px) 50vw, (max-width: 1024px) 50vw, 33vw"
                   className="object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"
                   priority={index < 3}
                 />
@@ -186,7 +186,7 @@ export default function Gallery() {
         </motion.div>
 
         {/* İnşaat Projeleri */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-8">
           {constructionWorks.map((work, index) => (
             <motion.div
               key={index}
@@ -197,12 +197,12 @@ export default function Gallery() {
               variants={cardVariants}
               whileHover={{ y: -5, scale: 1.02 }}
             >
-              <div className="relative w-full h-72">
+              <div className="relative w-full h-48 sm:h-56 md:h-64">
                 <Image
                   src={work.imageUrl}
                   alt={work.title}
                   fill
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  sizes="(max-width: 640px) 50vw, (max-width: 1024px) 50vw, 33vw"
                   className="object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"
                   priority={index < 3}
                 />

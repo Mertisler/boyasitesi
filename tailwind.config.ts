@@ -7,13 +7,23 @@ const config: Config = {
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
+    screens: {
+      'xs': '320px',
+      'sm': '640px',
+      'md': '768px',
+      'lg': '1024px',
+      'xl': '1280px',
+      '2xl': '1536px',
+    },
     extend: {
       colors: {
-        primary: '#0369a1', // Koyu Mavi (Ana)
-        secondary: '#f97316', // Turuncu (Vurgu)
+        primary: '#2563eb',
+        'primary-dark': '#1d4ed8',
+        secondary: '#64748b',
+        'secondary-dark': '#475569',
         accent: '#eab308', // Altın Sarısı (İkincil Vurgu)
         light: '#f8fafc', // Çok Açık Gri (Arka Plan)
-        dark: '#1e293b', // Koyu Gri/Mavi (Metin)
+        dark: '#0f172a',
         gray: {
           50: '#f8fafc',
           100: '#f1f5f9',
@@ -31,38 +41,40 @@ const config: Config = {
         sans: ['var(--font-inter)', 'sans-serif'],
       },
       animation: {
-        'fade-in': 'fadeIn 0.8s ease-out forwards',
-        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
-        'slide-in-left': 'slideInLeft 0.8s ease-out forwards',
-        'slide-in-right': 'slideInRight 0.8s ease-out forwards',
-        'animated-gradient': 'animatedGradient 15s ease infinite',
-        'paint-drop': 'paintDrop 1s ease-out forwards',
-        'paint-splash': 'paintSplash 1s ease-out forwards',
-        'brush-stroke': 'brushStroke 1s ease-out forwards',
-        'before-after': 'beforeAfter 1.5s ease-out forwards',
-        'service-card': 'serviceCard 1s ease-out forwards',
+        'fade-in': 'fadeIn 1s ease-in-out',
+        'slide-in-left': 'slideInLeft 1s ease-out',
+        'slide-in-right': 'slideInRight 1s ease-out',
+        'slide-in-up': 'slideInUp 1s ease-out',
+        'slide-in-down': 'slideInDown 1s ease-out',
+        'before-after': 'beforeAfter 0.5s ease-in-out',
+        'paint-drop': 'paintDrop 1s ease-out',
+        'paint-splash': 'paintSplash 1s ease-out',
+        'brush-stroke': 'brushStroke 1s ease-out',
       },
       keyframes: {
         fadeIn: {
           '0%': { opacity: '0' },
           '100%': { opacity: '1' },
         },
-        fadeInUp: {
-          '0%': { opacity: '0', transform: 'translateY(20px)' },
-          '100%': { opacity: '1', transform: 'translateY(0)' },
-        },
         slideInLeft: {
-          '0%': { opacity: '0', transform: 'translateX(-30px)' },
-          '100%': { opacity: '1', transform: 'translateX(0)' },
+          '0%': { transform: 'translateX(-100%)' },
+          '100%': { transform: 'translateX(0)' },
         },
         slideInRight: {
-          '0%': { opacity: '0', transform: 'translateX(30px)' },
-          '100%': { opacity: '1', transform: 'translateX(0)' },
+          '0%': { transform: 'translateX(100%)' },
+          '100%': { transform: 'translateX(0)' },
         },
-        animatedGradient: {
-          '0%': { backgroundPosition: '0% 50%' },
-          '50%': { backgroundPosition: '100% 50%' },
-          '100%': { backgroundPosition: '0% 50%' },
+        slideInUp: {
+          '0%': { transform: 'translateY(100%)' },
+          '100%': { transform: 'translateY(0)' },
+        },
+        slideInDown: {
+          '0%': { transform: 'translateY(-100%)' },
+          '100%': { transform: 'translateY(0)' },
+        },
+        beforeAfter: {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(100%)' },
         },
         paintDrop: {
           '0%': { transform: 'translateY(-100%)', opacity: '0' },
@@ -76,15 +88,10 @@ const config: Config = {
           '0%': { transform: 'translateX(-100%)', opacity: '0' },
           '100%': { transform: 'translateX(0)', opacity: '1' },
         },
-        beforeAfter: {
-          '0%': { transform: 'scale(0.8)', opacity: '0' },
-          '50%': { transform: 'scale(1.05)', opacity: '0.8' },
-          '100%': { transform: 'scale(1)', opacity: '1' },
-        },
-        serviceCard: {
-          '0%': { transform: 'translateY(50px)', opacity: '0' },
-          '100%': { transform: 'translateY(0)', opacity: '1' },
-        },
+      },
+      backgroundImage: {
+        'radial-gradient': 'radial-gradient(var(--tw-gradient-stops))',
+        'conic-gradient': 'conic-gradient(var(--tw-gradient-stops))',
       },
     },
   },

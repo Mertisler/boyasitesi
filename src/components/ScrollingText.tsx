@@ -19,16 +19,16 @@ const ScrollingText = () => {
           }}
           className="whitespace-nowrap"
         >
-          <span className="text-lg font-medium inline-block mr-16">
+          <span className="text-sm sm:text-base md:text-lg font-medium inline-block mr-8 sm:mr-12 md:mr-16">
             🏢 Profesyonel İnşaat ve Tadilat Hizmetleri
           </span>
-          <span className="text-lg font-medium inline-block mr-16">
+          <span className="text-sm sm:text-base md:text-lg font-medium inline-block mr-8 sm:mr-12 md:mr-16">
             🏠 Ev ve İş Yeri Tadilatları
           </span>
-          <span className="text-lg font-medium inline-block mr-16">
+          <span className="text-sm sm:text-base md:text-lg font-medium inline-block mr-8 sm:mr-12 md:mr-16">
             🌍 İstanbul ve İzmir başta olmak üzere Türkiye'nin her yerinde hizmetinizdeyiz
           </span>
-          <span className="text-lg font-medium inline-block mr-16">
+          <span className="text-sm sm:text-base md:text-lg font-medium inline-block mr-8 sm:mr-12 md:mr-16">
             📞 Hemen Bize Ulaşın: +90 545 542 04 67
           </span>
         </motion.div>
