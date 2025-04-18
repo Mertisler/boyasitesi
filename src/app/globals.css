@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 15, 23, 42; /* dark */
+  --background-start-rgb: 248, 250, 252; /* light */
+  --background-end-rgb: 226, 232, 240; /* gray-200 */
+}
+
+/* İsteğe bağlı: Koyu mod için renkler (şu an aktif değil) */
+/* @media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 248, 250, 252;
+    --background-start-rgb: 15, 23, 42;
+    --background-end-rgb: 30, 41, 59;
+  }
+} */
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+  @apply font-sans antialiased;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.container {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+/* Scroll animasyonları için görünürlük sınıfı */
+.scroll-animate {
+  opacity: 0;
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.scroll-animate.is-visible {
+  opacity: 1;
+}
+
+.scroll-fade-in-up.is-visible {
+  transform: translateY(0);
+}
+.scroll-fade-in-up {
+  transform: translateY(30px);
+}
+
+.scroll-slide-in-left.is-visible {
+  transform: translateX(0);
+}
+.scroll-slide-in-left {
+  transform: translateX(-30px);
+}
+
+.scroll-slide-in-right.is-visible {
+  transform: translateX(0);
+}
+.scroll-slide-in-right {
+  transform: translateX(30px);
+}
+
+/* Tailwind animasyonlarını kullanmak için keyframes tanımları tailwind.config.ts'e taşındı */
