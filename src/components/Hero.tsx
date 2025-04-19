@@ -1,14 +1,47 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useEffect, useState, useRef } from 'react';
+
+const mainTitles = [
+  "Mekanlarınıza Renk Katıyoruz",
+  "Eviniz Emin Ellerde",
+  "Siz Evinizi Kirletin Biz Yapalım",
+  "Hayalinizdeki Mekanlar",
+  "Profesyonel Boya Hizmetleri"
+];
+
+const subTitles = [
+  "Uzman ekibimizle evinizi, ofisinizi veya iş yerinizi hayallerinizdeki renklere kavuşturalım.",
+  "Daire tadilatından bina tadilatına, evinizin bütün işleri itina ile yapılır.",
+  "20 yıllık tecrübemizle hayalinizdeki mekanları gerçeğe dönüştürüyoruz.",
+  "Kaliteli malzeme ve uzman ekip ile garantili hizmet sunuyoruz.",
+  "İstanbul'un her yerinde profesyonel boya ve tadilat hizmetleri."
+];
 
 const Hero = () => {
   const [mounted, setMounted] = useState(false);
+  const [currentTitleIndex, setCurrentTitleIndex] = useState(0);
+  const [currentSubTitleIndex, setCurrentSubTitleIndex] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setMounted(true);
+    
+    // Başlık değişimi için interval
+    const titleInterval = setInterval(() => {
+      setCurrentTitleIndex((prev) => (prev + 1) % mainTitles.length);
+    }, 3000);
+
+    // Alt başlık değişimi için interval
+    const subTitleInterval = setInterval(() => {
+      setCurrentSubTitleIndex((prev) => (prev + 1) % subTitles.length);
+    }, 3000);
+
+    return () => {
+      clearInterval(titleInterval);
+      clearInterval(subTitleInterval);
+    };
   }, []);
 
   if (!mounted) return null;
@@ -33,7 +66,7 @@ const Hero = () => {
   // Boya damlaları
   const paintDrops = Array.from({ length: 8 }, (_, i) => ({
     id: i,
-    left: 10 + (i * 80) / 8, // Daha düzenli dağılım
+    left: 10 + (i * 80) / 8,
     delay: 0.5 + Math.random() * 1.5,
     size: 30 + Math.random() * 40,
     duration: 2 + Math.random() * 2,
@@ -185,23 +218,33 @@ const Hero = () => {
       </div>
 
       {/* Ana içerik */}
-      <div className="relative z-20 text-center px-4 max-w-4xl mx-auto backdrop-blur-sm bg-black/10 p-8 rounded-2xl">
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-5xl md:text-7xl font-bold mb-6 text-white drop-shadow-lg"
-        >
-          Mekanlarınıza Renk Katıyoruz
-        </motion.h1>
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-xl md:text-2xl mb-8 text-white/90 drop-shadow-md"
-        >
-          Uzman ekibimizle evinizi, ofisinizi veya iş yerinizi hayallerinizdeki renklere kavuşturalım.
-        </motion.p>
+      <div className="container mx-auto px-4 text-center relative z-10">
+        <AnimatePresence mode="wait">
+          <motion.h1
+            key={currentTitleIndex}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.5 }}
+            className="text-5xl md:text-7xl font-bold mb-6 text-white drop-shadow-lg bg-black/20 px-8 py-4 rounded-xl"
+          >
+            {mainTitles[currentTitleIndex]}
+          </motion.h1>
+        </AnimatePresence>
+
+        <AnimatePresence mode="wait">
+          <motion.p
+            key={currentSubTitleIndex}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.5 }}
+            className="text-xl md:text-2xl mb-8 text-white drop-shadow-lg bg-black/20 px-8 py-4 rounded-xl"
+          >
+            {subTitles[currentSubTitleIndex]}
+          </motion.p>
+        </AnimatePresence>
+
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -218,10 +261,10 @@ const Hero = () => {
             }}
             whileTap={{ scale: 0.98 }}
           >
-            Hizmetleri Keşfet
+            Hizmetleri keşfetmek için aşağıya kaydırın
           </motion.a>
           <motion.a
-            href="tel:+905555555555"
+            href="tel:+905455420467"
             className="bg-orange-500 text-white px-8 py-3 rounded-full text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
             whileHover={{ 
               scale: 1.05, 
